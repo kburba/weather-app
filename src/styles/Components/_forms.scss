@@ -1,0 +1,45 @@
+label {
+  font-size: $s-size;
+}
+
+.inputText {
+  display: flex;
+  flex-direction: column;
+  & input {
+    border: 0;
+    padding: 10px 10px 5px 10px;
+    font-size: 16px;
+    background: 0;
+    font-weight: bold;
+    font-family: Nunito;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  &.error {
+    & input {
+      border-bottom-color: #f50057;
+    }
+  }
+  & .errorNotice {
+    color: $error;
+    font-size: $s-size;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  & .clearInput {
+    color: $off-gray;
+    cursor: pointer;
+    opacity: 0.1;
+    font-size: 2rem;
+    position: absolute;
+    right: 1.2rem;
+    transition: opacity 0.5s ease-in-out;
+    &.active {
+      opacity: 1;
+    }
+    &:hover {
+      color: $on-gray;
+    }
+  }
+}
