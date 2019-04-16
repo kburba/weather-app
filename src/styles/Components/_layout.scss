@@ -1,4 +1,57 @@
+.rootContainer {
+  height: 100%;
+  position: relative;
+}
+
 .header {
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  height: 50px;
+  font-size: 200%;
+  justify-content: space-between;
+  padding: $l-size;
+  transition: height 0.3s ease-out;
+
+  &.big {
+    height: 100%;
+  }
+}
+
+.rightContainer,
+.leftContainer {
+  background-color: white;
+  box-shadow: $defaultShadow;
+  bottom: 24px;
+  position: absolute;
+  top: 24px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.rightContainer {
+  transform: translateX(110%);
+  right: 0;
+  left: 24px;
+  &.active {
+    transform: translateX(0%);
+  }
+}
+
+.leftContainer {
+  transform: translateX(-110%);
+  left: 0;
+  right: 24px;
+  &.active {
+    transform: translateX(0%);
+  }
+}
+
+.closeIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: $xl-size;
+  line-height: 1;
+  margin: $s-size;
 }
 
 .mainContainer {
