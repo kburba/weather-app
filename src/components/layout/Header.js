@@ -5,11 +5,11 @@ import { showLeft, showRight } from "./../../actions/layoutActions";
 function Header({ showLeft, showRight }) {
   return (
     <div className="header">
-      <div onClick={showLeft}>
+      <div className="iconButton" onClick={showLeft}>
         <i className="fas fa-bars" />
       </div>
       <div>Marijampole</div>
-      <div onClick={showRight}>
+      <div className="iconButton" onClick={showRight}>
         <i className="fas fa-plus" />
       </div>
     </div>

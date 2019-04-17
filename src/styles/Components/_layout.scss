@@ -10,7 +10,7 @@
   font-size: 200%;
   justify-content: space-between;
   padding: $l-size;
-  transition: height 0.3s ease-out;
+  transition: height $defaultTransition;
 
   &.big {
     height: 100%;
@@ -24,10 +24,12 @@
   bottom: 24px;
   position: absolute;
   top: 24px;
-  transition: transform 0.5s ease-in-out;
+  transition: transform $defaultTransition;
 }
 
 .rightContainer {
+  display: flex;
+  align-items: center;
   transform: translateX(110%);
   right: 0;
   left: 24px;
@@ -45,13 +47,14 @@
   }
 }
 
-.closeIcon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: $xl-size;
-  line-height: 1;
-  margin: $s-size;
+.centeredContainer {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hr {
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mainContainer {

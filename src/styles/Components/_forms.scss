@@ -1,45 +1,78 @@
-label {
-  font-size: $s-size;
-}
+.autoCompleteDropDown {
+  margin: 0 auto;
+  margin-top: $l-size;
+  position: relative;
 
-.inputText {
-  display: flex;
-  flex-direction: column;
-  & input {
-    border: 0;
-    padding: 10px 10px 5px 10px;
-    font-size: 16px;
-    background: 0;
-    font-weight: bold;
-    font-family: Nunito;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.12);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-  &.error {
-    & input {
-      border-bottom-color: #f50057;
-    }
-  }
-  & .errorNotice {
-    color: $error;
-    font-size: $s-size;
-    font-weight: bold;
-    margin-left: 10px;
-  }
-  & .clearInput {
-    color: $off-gray;
-    cursor: pointer;
-    opacity: 0.1;
-    font-size: 2rem;
-    position: absolute;
-    right: 1.2rem;
-    transition: opacity 0.5s ease-in-out;
-    &.active {
+  &.opened {
+    & .dropDownContent {
+      display: block;
       opacity: 1;
     }
-    &:hover {
-      color: $on-gray;
+
+    & button {
+      border: 1px solid $lightblue2;
+    }
+  }
+}
+
+.resultsList {
+  position: absolute;
+  top: 55px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 5px;
+}
+
+.autoCompleteDropDown button {
+  padding: 15px 15px 15px 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: border $defaultTransition;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  &:hover {
+    border: 1px solid $lightblue2;
+  }
+
+  & i.fas.fa-caret-down {
+    margin-left: 15px;
+  }
+}
+
+.autoCompleteDropDown .dropDownContent {
+  display: none;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity $defaultTransition;
+
+  & input.dropDownSearch {
+    position: absolute;
+    font-family: $defaultFont;
+    left: 2px;
+    top: 2px;
+    padding: 14px 14px 14px 25px;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border: 0;
+    color: $lightblue2;
+  }
+
+  & span.clearInput {
+    top: 0;
+    right: 0;
+    line-height: 1;
+    padding: 14px;
+    position: absolute;
+    cursor: pointer;
+    font-size: 2.4rem;
+    color: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity $defaultTransition;
+
+    &.active {
+      opacity: 1;
     }
   }
 }

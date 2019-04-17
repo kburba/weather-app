@@ -1,57 +1,58 @@
 button {
-  background: none;
-  border: 2px solid $purple;
-  border-radius: $l-size;
-  color: $purple;
-  cursor: pointer;
+  background: 0;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px 25px;
   font-family: $defaultFont;
-  font-weight: bold;
-  padding: $xs-size $s-size;
-  transition: background-color 0.15s linear, color 0.15s linear,
-    opacity 0.15s linear;
-  & i {
-    margin-right: $xs-size;
-    transition: transform 0.3s ease-in-out;
-  }
+  color: $lightblue2;
+  font-weight: 600;
+  font-size: 1.6rem;
 
-  &.iconButton {
-    margin-left: $s-size;
-  }
-
-  &.iconButton i {
-    margin-right: 0;
-  }
-  & i.left {
-    margin-left: $xs-size;
-    margin-right: 0;
-  }
-  &.opened i {
-    transform: scaleY(-1);
-  }
-  &:focus {
+  &:focus,
+  &:active {
     outline: none;
   }
-  &:hover,
-  &.opened {
-    color: white;
-    background-color: $purple;
-  }
-  &.main {
-    color: white;
-    background-color: $purple;
-    padding: $xs-size 2rem;
-  }
-  &.disabled {
-    border-color: gray;
-    background-color: lightgray;
-    color: gray;
-    opacity: 0.5;
-    cursor: default;
+  &:hover {
+    cursor: pointer;
   }
 }
 
-.buttonsRow {
+.iconButton {
+  cursor: pointer;
+}
+
+.closeButton {
+  cursor: pointer;
+  top: 0;
+  font-size: $xl-size;
+  margin: $s-size;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+}
+
+.textLink {
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  color: $lightblue2;
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
-  margin-top: $l-size;
+  font-weight: 600;
+  margin-bottom: $l-size;
+  padding: 15px 25px 15px 15px;
+  transition: border $defaultTransition;
+
+  &:hover {
+    border: 1px solid $lightblue2;
+  }
+
+  & span {
+    padding-bottom: 0.5rem;
+    margin-left: 1.2rem;
+  }
+
+  & i.fa-map-marker-alt {
+    font-size: 200%;
+  }
 }

@@ -5,11 +5,14 @@ $dynamicColumn: calc(100% - #{$fixedColumns});
 // Fonts
 $defaultFont: "Nunito";
 
+$defaultTransition: 0.2s ease-in-out;
+
 // Colors
 $off-black: #20222b;
 $dark-blue: #333745;
 $blue: #3c4251;
 $lightblue: #1fc8db;
+$lightblue2: #00bcd4;
 $lightgray: #eee;
 $selectedgray: rgba(255, 255, 255, 0.3);
 $off-gray: #a3b1b2;
