@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import classnames from "classnames";
 import { getWeatherByCoords } from "./../../actions/weatherActions";
+import { addError } from "./../../actions/errorActions";
+import LoadingSpinner from "./LoadingSpinner";
 
-export default function MyLocationButton() {
-  const [locationError, showLocationError] = useState(false);
-
+function MyLocationButton({ isLoading, errors, getWeatherByCoords, addError }) {
   const getLocation = position => {
     const lat = position.coords.latitude;
     const long = position.coords.longitude;
@@ -17,24 +19,38 @@ export default function MyLocationButton() {
   };
 
   const handleLocationError = () => {
-    showLocationError(true);
-    setTimeout(() => {
-      showLocationError(false);
-    }, 6000);
+    addError({
+      mylocation: "Could not retrieve location information from the browser."
+    });
   };
 
   const useMyLocation = () => {
     navigator.geolocation.getCurrentPosition(getLocation, handleLocationError);
   };
+
   return (
-    <div className="textLink" onClick={useMyLocation}>
-      <i className="fas fa-map-marker-alt" />
-      <span>Use my device location</span>
-      {locationError && (
-        <span className="errorNotice">
-          Cannot retrieve location information
-        </span>
+    <div
+      className={classnames("textLink", { loading: isLoading })}
+      onClick={useMyLocation}
+    >
+      {isLoading && <LoadingSpinner />}
+      <div className="textContainer">
+        <i className="fas fa-map-marker-alt" />
+        <span>Use my device location</span>
+      </div>
+      {errors.mylocation && (
+        <span className="errorNotice">{errors.mylocation}</span>
       )}
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  isLoading: state.layout.isLoading,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { getWeatherByCoords, addError }
+)(MyLocationButton);

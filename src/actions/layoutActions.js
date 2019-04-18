@@ -1,3 +1,10 @@
+export const setLoading = action => dispatch => {
+  dispatch({
+    type: "SET_LOADING",
+    payload: action
+  });
+};
+
 export const showLeft = action => dispatch => {
   dispatch({
     type: "SHOW_LEFT",

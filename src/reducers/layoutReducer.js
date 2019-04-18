@@ -1,14 +1,17 @@
 const initialState = {
   showLeft: false,
-  showRight: false
+  showRight: false,
+  isLoading: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "SET_LOADING":
+      return { ...state, isLoading: action.payload };
     case "SHOW_LEFT":
-      return { showRight: false, showLeft: !state.showLeft };
+      return { ...state, showRight: false, showLeft: !state.showLeft };
     case "SHOW_RIGHT":
-      return { showRight: !state.showRight, showLeft: false };
+      return { ...state, showRight: !state.showRight, showLeft: false };
     default:
       return state;
   }

@@ -32,12 +32,13 @@ button {
 }
 
 .textLink {
-  align-items: center;
   border-radius: 5px;
   border: 1px solid transparent;
   color: $lightblue2;
   cursor: pointer;
+  position: relative;
   display: flex;
+  flex-direction: column;
   font-weight: 600;
   margin-bottom: $l-size;
   padding: 15px 25px 15px 15px;
@@ -46,13 +47,28 @@ button {
   &:hover {
     border: 1px solid $lightblue2;
   }
-
-  & span {
-    padding-bottom: 0.5rem;
-    margin-left: 1.2rem;
-  }
-
   & i.fa-map-marker-alt {
     font-size: 200%;
+  }
+
+  &.loading::before {
+    content: "";
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  & .textContainer {
+    display: flex;
+    align-items: center;
+
+    & span {
+      padding-bottom: 0.5rem;
+      margin-left: 1.2rem;
+    }
   }
 }
