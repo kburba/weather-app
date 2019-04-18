@@ -13,7 +13,7 @@ function RightContainer({ layout, showRight }) {
         <div className="hr" />
         <AutoCompleteDropDown />
       </div>
-      <div onClick={showRight} className="closeButton">
+      <div onClick={() => showRight(false)} className="closeButton">
         <i className="fas fa-times" />
       </div>
     </div>

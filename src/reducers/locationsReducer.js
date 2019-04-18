@@ -1,12 +1,12 @@
 const initialState = {
-  selected: {},
+  currentLocation: {},
   list: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "SET_SELECTED_LOCATION":
-      return { ...state, selected: action.payload };
+    case "SET_CURRENT_LOCATION":
+      return { ...state, currentLocation: action.payload };
     case "ADD_LOCATION":
       const newList = state.list.push(action.payload);
       return { ...state, list: newList };

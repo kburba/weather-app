@@ -9,9 +9,9 @@ export default (state = initialState, action) => {
     case "SET_LOADING":
       return { ...state, isLoading: action.payload };
     case "SHOW_LEFT":
-      return { ...state, showRight: false, showLeft: !state.showLeft };
+      return { ...state, showLeft: action.payload };
     case "SHOW_RIGHT":
-      return { ...state, showRight: !state.showRight, showLeft: false };
+      return { ...state, showRight: action.payload };
     default:
       return state;
   }

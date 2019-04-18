@@ -7,7 +7,7 @@ function LeftContainer({ layout, showLeft }) {
   return (
     <div className={classnames("leftContainer", { active: layout.showLeft })}>
       Showing list of favorite cities
-      <div onClick={showLeft} className="closeButton">
+      <div onClick={() => showLeft(false)} className="closeButton">
         <i className="fas fa-times" />
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function AutoCompleteDropDown() {
     <div
       className={classnames("autoCompleteDropDown", { opened: activeDropDown })}
     >
-      <button onClick={handleDropDownClick} onBlur={handleDropDownClick}>
+      <button onClick={handleDropDownClick}>
         Select your country <i className="fas fa-caret-down" />
       </button>
       <div className={classnames("dropDownContent")}>
@@ -32,6 +32,7 @@ export default function AutoCompleteDropDown() {
           className="dropDownSearch"
           onChange={handleInputChange}
           autoFocus={true}
+          onBlur={handleDropDownClick}
         />
         <span
           className={classnames("clearInput", { active: country !== "" })}
