@@ -11,14 +11,17 @@ import {
 function MapContainer({ currentLocation }) {
   return (
     <div className="mapContainer">
-      <MyMapComponent
-        isMarkerShown
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${gMapKey}&v=3.exp&libraries=geometry,drawing,places`}
-        loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `400px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
-        coords={currentLocation.coord}
-      />
+      {currentLocation.coord && (
+        <MyMapComponent
+          isMarkerShown
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${gMapKey}&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          coords={currentLocation.coord}
+        />
+      )}
+      {!currentLocation.coord && <div>Please add location to see map</div>}
     </div>
   );
 }

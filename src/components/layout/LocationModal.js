@@ -65,7 +65,8 @@ Modal.setAppElement("#root");
 
 const mapStateToProps = state => ({
   showModal: state.layout.showModal,
-  errors: state.errors
+  errors: state.errors,
+  locationList: state.locations.list
 });
 
 export default connect(

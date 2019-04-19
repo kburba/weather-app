@@ -63,4 +63,11 @@
   .header {
     font-size: $m-size;
   }
+
+  .mainContainer {
+    & .tempInfo {
+      font-size: 7rem;
+      margin: $s-size;
+    }
+  }
 }

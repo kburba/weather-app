@@ -15,6 +15,7 @@ export const getWeatherByCity = city => dispatch => {
   Axios.get(url)
     .then(result => {
       dispatch(setCurrentLocation(result.data));
+      dispatch(setModal(false));
     })
     .catch(err => {
       console.log(err);
@@ -27,7 +28,6 @@ export const getWeatherByCity = city => dispatch => {
     .finally(() => {
       dispatch(setLoading(false));
       dispatch(showLeft(false));
-      dispatch(setModal(false));
     });
 };
 

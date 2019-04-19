@@ -38,16 +38,12 @@ function MyLocationButton({ isLoading, errors, getWeatherByCoords, addError }) {
         <i className="fas fa-map-marker-alt" />
         <span>Use device location</span>
       </div>
-      {errors.mylocation && (
-        <span className="errorNotice">{errors.mylocation}</span>
-      )}
     </button>
   );
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.layout.isLoading,
-  errors: state.errors
+  isLoading: state.layout.isLoading
 });
 
 export default connect(

@@ -1,31 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { showLeft } from "../../actions/layoutActions";
 import { getWeatherByCity } from "./../../actions/weatherActions";
+import {
+  addLocationToList,
+  removeLocation
+} from "./../../actions/locationActions";
 import List from "../forms/List";
 
-function Drawer({ layout, showLeft, getWeatherByCity, locationsList }) {
-  const cityList = localStorage.locations
-    ? localStorage.locations.split(",").filter(item => {
-        return item !== "";
-      })
-    : [];
-
-  const [cities, setCities] = useState(cityList);
-
+function Drawer({
+  layout,
+  showLeft,
+  getWeatherByCity,
+  locationsList,
+  addLocationToList,
+  removeLocation
+}) {
   const handleCityClick = city => {
     getWeatherByCity(city);
   };
 
   const handleRemoveLocation = city => {
-    const updatedCities = cities.filter(item => {
+    removeLocation(city);
+    const newList = locationsList.filter(item => {
       return item.trim().toLowerCase() !== city.trim().toLowerCase();
     });
-
-    setCities(updatedCities);
-
-    localStorage.setItem("locations", updatedCities.toString());
+    localStorage.setItem("locations", newList.toString());
   };
 
   return (
@@ -40,9 +41,9 @@ function Drawer({ layout, showLeft, getWeatherByCity, locationsList }) {
         <div className="drawer__title">Favorite locations</div>
       </div>
       <div className="drawer__body">
-        {cities.length > 0 && (
+        {locationsList.length > 0 && (
           <List
-            items={cities}
+            items={locationsList}
             handleCityClick={handleCityClick}
             handleRemoveLocation={handleRemoveLocation}
           />
@@ -59,5 +60,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { showLeft, getWeatherByCity }
+  { showLeft, getWeatherByCity, addLocationToList, removeLocation }
 )(Drawer);
