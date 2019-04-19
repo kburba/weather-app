@@ -5,7 +5,6 @@ export default function AutoCompleteDropDown({ list, addLocation }) {
   const [activeDropDown, setDropDown] = useState(false);
   const [country, setCountry] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
 
   const handleDropDownClick = () => {
     setDropDown(!activeDropDown);
@@ -23,7 +22,6 @@ export default function AutoCompleteDropDown({ list, addLocation }) {
   const handleAddClick = (city, country) => {
     if (city !== "") {
       // addLocation(city);
-      setSelectedCity(city);
       setSelectedCountry(country);
     }
     setDropDown(false);

@@ -15,11 +15,14 @@
 }
 
 .resultsList {
+  background-color: #fafafa;
+  color: $dark-blue;
   position: absolute;
-  top: 55px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  top: 60px;
+  border: 1px solid transparent;
   width: 100%;
-  border-radius: 5px;
+  border-bottom-left-radius: $s-size;
+  border-bottom-right-radius: $s-size;
   font-size: 2rem;
   max-height: 300px;
   overflow: hidden;
@@ -63,6 +66,10 @@
 .autoCompleteDropDown .dropDownContent {
   display: none;
   position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   opacity: 0;
   transition: opacity $defaultTransition;
@@ -70,9 +77,14 @@
   & input.dropDownSearch {
     position: absolute;
     font-family: $defaultFont;
-    left: 2px;
-    top: 2px;
-    padding: 12px 5px 13px 25px;
+    border-top-left-radius: $s-size;
+    border-top-right-radius: $s-size;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-left: $m-size;
+    width: calc(100% - 1.4rem);
     font-weight: 600;
     font-size: 1.6rem;
     border: 0;
@@ -82,11 +94,10 @@
   & span.clearInput {
     top: 0;
     right: 0;
-    line-height: 1;
-    padding: 14px;
+    padding: 9px 20px;
     position: absolute;
     cursor: pointer;
-    font-size: 2.4rem;
+    font-size: $l-size;
     color: rgba(0, 0, 0, 0.2);
     opacity: 0;
     transition: opacity $defaultTransition;
@@ -98,7 +109,6 @@
 }
 
 input.inputText {
-  padding: $s-size;
   padding-left: $m-size;
   margin: $s-size;
   margin-left: 0;

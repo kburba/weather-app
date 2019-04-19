@@ -3,12 +3,23 @@ import Modal from "react-modal";
 import { connect } from "react-redux";
 import { setModal } from "./../../actions/layoutActions";
 import { addLocation } from "./../../actions/locationActions";
+import { getWeatherByCity } from "./../../actions/weatherActions";
 import MyLocationButton from "../forms/MyLocationButton";
 import AutoCompleteDropDown from "../forms/AutoCompleteDropDown";
 import countriesList from "./../../data/countries.json";
 
-function LocationModal({ showModal, setModal, addLocation, errors }) {
+function LocationModal({
+  showModal,
+  setModal,
+  addLocation,
+  getWeatherByCity,
+  errors
+}) {
   const [city, setCity] = useState("");
+
+  const handleAddLocation = city => {
+    getWeatherByCity(city);
+  };
 
   return (
     <Modal
@@ -40,9 +51,9 @@ function LocationModal({ showModal, setModal, addLocation, errors }) {
             className="inputText"
             placeholder="Enter city name"
           />
-          <button onClick={() => addLocation(city)}>Add</button>
-          {errors.location && (
-            <div className="errorNotice">Cannot find location</div>
+          <button onClick={() => handleAddLocation(city)}>Add</button>
+          {errors.mylocation && (
+            <div className="errorNotice">{errors.mylocation}</div>
           )}
         </div>
       </div>
@@ -59,5 +70,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { setModal, addLocation }
+  { setModal, addLocation, getWeatherByCity }
 )(LocationModal);

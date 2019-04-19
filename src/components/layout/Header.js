@@ -19,7 +19,7 @@ function Header({
       localStorage.locations !== ""
     ) {
       const city = localStorage.locations.split(",")[0].toUpperCase();
-      // getWeatherByCity(city);
+      getWeatherByCity(city);
       showingLocation = <div>{currentLocation.name}</div>;
     } else {
       showingLocation = (
