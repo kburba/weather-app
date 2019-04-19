@@ -23,7 +23,7 @@ class MainContainer extends Component {
           <div className="descInfo">
             <img
               alt="Weather icon"
-              src={`http://openweathermap.org/img/w/${
+              src={`https://openweathermap.org/img/w/${
                 currentLocation.weather[0].icon
               }.png`}
             />
