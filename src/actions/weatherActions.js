@@ -2,8 +2,8 @@ import { OWMurl, OWMkey } from "./../config/keys";
 import Axios from "axios";
 import { setLoading } from "./layoutActions";
 import { addError } from "./errorActions";
-import { showRight } from "./layoutActions";
-import { addLocation } from "./locationActions";
+import { setModal, showLeft } from "./layoutActions";
+import { setCurrentLocation } from "./locationActions";
 
 export const getWeatherByCity = city => dispatch => {
   // http://api.openweathermap.org/data/2.5/weather?q=London&appid=cb8528b6f2cf632a85f5e8f1e9dc4a0b
@@ -14,11 +14,7 @@ export const getWeatherByCity = city => dispatch => {
 
   Axios.get(url)
     .then(result => {
-      const { name } = result.data;
-      const { temp } = result.data.main;
-      const { description } = result.data.weather[0];
-      console.log("Temp in " + name + " is " + temp + "°C");
-      dispatch(addLocation({ name, temp, description }));
+      dispatch(setCurrentLocation(result.data));
     })
     .catch(err => {
       console.log(err);
@@ -30,6 +26,8 @@ export const getWeatherByCity = city => dispatch => {
     })
     .finally(() => {
       dispatch(setLoading(false));
+      dispatch(showLeft(false));
+      dispatch(setModal(false));
     });
 };
 
@@ -48,12 +46,8 @@ export const getWeatherByCoords = (lat, long) => dispatch => {
     "&units=metric";
   Axios.get(url)
     .then(result => {
-      const { name } = result.data;
-      const { temp } = result.data.main;
-      const { description } = result.data.weather[0];
-      console.log("Temp in " + name + " is " + temp + "°C");
-      dispatch(showRight(false));
-      dispatch(addLocation({ name, temp, description }));
+      dispatch(setModal(false));
+      dispatch(setCurrentLocation(result.data));
     })
     .catch(err => {
       console.log(err);
@@ -65,5 +59,7 @@ export const getWeatherByCoords = (lat, long) => dispatch => {
     })
     .finally(() => {
       dispatch(setLoading(false));
+      dispatch(showLeft(false));
+      dispatch(setModal(false));
     });
 };

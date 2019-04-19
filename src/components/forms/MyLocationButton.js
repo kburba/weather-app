@@ -29,19 +29,19 @@ function MyLocationButton({ isLoading, errors, getWeatherByCoords, addError }) {
   };
 
   return (
-    <div
-      className={classnames("textLink", { loading: isLoading })}
+    <button
+      className={classnames("myLocationButton", { loading: isLoading })}
       onClick={useMyLocation}
     >
       {isLoading && <LoadingSpinner />}
       <div className="textContainer">
         <i className="fas fa-map-marker-alt" />
-        <span>Use my device location</span>
+        <span>Use device location</span>
       </div>
       {errors.mylocation && (
         <span className="errorNotice">{errors.mylocation}</span>
       )}
-    </div>
+    </button>
   );
 }
 

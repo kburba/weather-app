@@ -1,6 +1,6 @@
 const initialState = {
   showLeft: false,
-  showRight: false,
+  showModal: false,
   isLoading: false
 };
 
@@ -10,8 +10,8 @@ export default (state = initialState, action) => {
       return { ...state, isLoading: action.payload };
     case "SHOW_LEFT":
       return { ...state, showLeft: action.payload };
-    case "SHOW_RIGHT":
-      return { ...state, showRight: action.payload };
+    case "SHOW_MODAL":
+      return { ...state, showModal: action.payload };
     default:
       return state;
   }

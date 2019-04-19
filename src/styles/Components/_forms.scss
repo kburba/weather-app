@@ -1,6 +1,5 @@
 .autoCompleteDropDown {
   margin: 0 auto;
-  margin-top: $l-size;
   position: relative;
 
   &.opened {
@@ -21,13 +20,34 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
   border-radius: 5px;
+  font-size: 2rem;
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: auto;
+
+  & > div {
+    padding: $s-size;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    &.selected {
+      font-weight: bold;
+      color: $lightblue2;
+    }
+
+    &.resultMessage {
+      font-size: $m-size;
+    }
+  }
 }
 
-.autoCompleteDropDown button {
+.autoCompleteDropDown .selectButton {
   padding: 15px 15px 15px 25px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid $lightblue2;
   transition: border $defaultTransition;
-  position: absolute;
   top: 0;
   width: 100%;
   left: 0;
@@ -52,7 +72,7 @@
     font-family: $defaultFont;
     left: 2px;
     top: 2px;
-    padding: 14px 14px 14px 25px;
+    padding: 12px 5px 13px 25px;
     font-weight: 600;
     font-size: 1.6rem;
     border: 0;
@@ -77,9 +97,21 @@
   }
 }
 
+input.inputText {
+  padding: $s-size;
+  padding-left: $m-size;
+  margin: $s-size;
+  margin-left: 0;
+  border-radius: $s-size;
+  border: 0;
+  font-size: 2.4rem;
+  font-family: "Nunito";
+  min-height: 55px;
+}
+
 .errorNotice {
   font-size: 12px;
-  color: red;
+  color: $error;
   position: absolute;
   top: 100%;
   width: 100%;

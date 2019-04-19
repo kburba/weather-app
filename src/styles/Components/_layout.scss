@@ -4,46 +4,18 @@
 }
 
 .header {
-  background-color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid $gray;
+  color: $dark-blue;
   display: flex;
+  align-items: center;
   height: 50px;
-  font-size: 200%;
+  font-size: $l-size;
   justify-content: space-between;
   padding: $l-size;
   transition: height $defaultTransition;
 
-  &.big {
-    height: 100%;
-  }
-}
-
-.rightContainer,
-.leftContainer {
-  background-color: white;
-  box-shadow: $defaultShadow;
-  bottom: 24px;
-  position: absolute;
-  top: 24px;
-  transition: transform $defaultTransition;
-}
-
-.rightContainer {
-  display: flex;
-  align-items: center;
-  transform: translateX(110%);
-  right: 0;
-  left: 24px;
-  &.active {
-    transform: translateX(0%);
-  }
-}
-
-.leftContainer {
-  transform: translateX(-110%);
-  left: 0;
-  right: 24px;
-  &.active {
-    transform: translateX(0%);
+  & .iconButton {
+    font-size: $l-size;
   }
 }
 
@@ -70,7 +42,28 @@
 }
 
 .mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .tempInfo {
+    font-size: 10rem;
+    text-align: center;
+    margin: $l-size;
+  }
+
+  & .descInfo {
+    display: flex;
+    align-items: center;
+    font-size: $l-size;
+  }
 }
 
 .mapContainer {
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .header {
+    font-size: $m-size;
+  }
 }
