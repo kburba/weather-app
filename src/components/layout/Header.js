@@ -1,9 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { showLeft, showRight } from "./../../actions/layoutActions";
+import { showLeft, setModal } from "./../../actions/layoutActions";
 import { getWeatherByCity } from "./../../actions/weatherActions";
+import LoadingSpinner from "../forms/LoadingSpinner";
 
-function Header({ showLeft, showRight, currentLocation, getWeatherByCity }) {
+function Header({
+  showLeft,
+  setModal,
+  currentLocation,
+  getWeatherByCity,
+  isLoading
+}) {
   let showingLocation;
   if (Object.keys(currentLocation).length === 0) {
     // check if there are any locations saved in localStorage
@@ -12,11 +19,11 @@ function Header({ showLeft, showRight, currentLocation, getWeatherByCity }) {
       localStorage.locations !== ""
     ) {
       const city = localStorage.locations.split(",")[0].toUpperCase();
-      getWeatherByCity(city);
+      // getWeatherByCity(city);
       showingLocation = <div>{currentLocation.name}</div>;
     } else {
       showingLocation = (
-        <div onClick={() => showRight(true)} className="textClickable">
+        <div onClick={() => setModal(true)} className="textClickable">
           Click here to set location
         </div>
       );
@@ -24,13 +31,15 @@ function Header({ showLeft, showRight, currentLocation, getWeatherByCity }) {
   } else {
     showingLocation = currentLocation.name.toUpperCase();
   }
+
+  const header = isLoading ? <LoadingSpinner /> : <div>{showingLocation}</div>;
   return (
     <div className="header">
       <div className="iconButton" onClick={() => showLeft(true)}>
         <i className="fas fa-bars" />
       </div>
-      <div>{showingLocation}</div>
-      <div className="iconButton" onClick={() => showRight(true)}>
+      {header}
+      <div className="iconButton" onClick={() => setModal(true)}>
         <i className="fas fa-plus" />
       </div>
     </div>
@@ -38,10 +47,11 @@ function Header({ showLeft, showRight, currentLocation, getWeatherByCity }) {
 }
 
 const mapStateToProps = state => ({
-  currentLocation: state.locations.currentLocation
+  currentLocation: state.locations.currentLocation,
+  isLoading: state.layout.isLoading
 });
 
 export default connect(
   mapStateToProps,
-  { showLeft, showRight, getWeatherByCity }
+  { showLeft, setModal, getWeatherByCity }
 )(Header);

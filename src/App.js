@@ -3,8 +3,8 @@ import "./styles/styles.scss";
 import Header from "./../src/components/layout/Header";
 import MainContainer from "./components/layout/MainContainer";
 import MapContainer from "./components/layout/MapContainer";
-import RightContainer from "./components/layout/RightContainer";
-import LeftContainer from "./components/layout/LeftContainer";
+import Drawer from "./components/layout/Drawer";
+import LocationModal from "./components/layout/LocationModal";
 
 export default function App() {
   return (
@@ -12,8 +12,8 @@ export default function App() {
       <Header />
       <MainContainer />
       <MapContainer />
-      <RightContainer />
-      <LeftContainer />
+      <Drawer />
+      <LocationModal />
     </div>
   );
 }

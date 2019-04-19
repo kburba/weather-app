@@ -12,9 +12,9 @@ export const showLeft = action => dispatch => {
   });
 };
 
-export const showRight = action => dispatch => {
+export const setModal = action => dispatch => {
   dispatch({
-    type: "SHOW_RIGHT",
+    type: "SHOW_MODAL",
     payload: action
   });
 };

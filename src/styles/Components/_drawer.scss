@@ -1,0 +1,54 @@
+.drawer {
+  background-color: $dark-blue;
+  box-shadow: $defaultShadow;
+  color: white;
+  font-size: $m-size;
+  position: absolute;
+  top: 24px;
+  transition: transform $defaultTransition;
+  transform: translateX(-110%);
+  left: 0;
+  max-width: 60rem;
+  padding: $m-size;
+  &.active {
+    transform: translateX(0%);
+  }
+}
+
+.drawer__header {
+  display: flex;
+  align-items: center;
+  padding-bottom: $s-size;
+  border-bottom: 1px solid white;
+}
+
+.drawer__title {
+  text-align: center;
+  margin: $s-size $l-size;
+  font-weight: bold;
+}
+
+.drawer__close {
+  cursor: pointer;
+  font-size: $l-size;
+  margin-right: $s-size;
+}
+
+.drawer__body {
+  margin: $s-size;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: $l-size;
+}
+
+.drawer__body .listItem {
+  cursor: pointer;
+  padding: $s-size;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  & .removeButton {
+    margin-left: $l-size;
+  }
+}
